@@ -3,352 +3,572 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>N. Saravanan – Advocate | Polur, Thiruvannamalai</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<title>N. Saravanan | Advocate | Polur, Thiruvannamalai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --gold: #c9a84c;
-    --gold-dim: rgba(201,168,76,0.15);
-    --gold-border: rgba(201,168,76,0.28);
-    --deep: #0d0b08;
-    --dark: #131008;
-    --card: #1b1610;
-    --cream: #f5ede0;
-    --muted: #9e8e76;
+    --midnight: #142338;
+    --charcoal: #17191D;
+    --ivory: #F5F0E6;
+    --gold: #CDB783;
+    --slate: #687386;
+    --white: #FFFFFF;
+    --border: rgba(205, 183, 131, 0.2);
+    --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  html { scroll-behavior: smooth; }
-  body { font-family: 'DM Sans', sans-serif; background: var(--deep); color: var(--cream); overflow-x: hidden; }
 
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 999;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: .85rem 2.5rem;
-    background: rgba(13,11,8,.95);
-    border-bottom: 1px solid var(--gold-border);
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--ivory);
+    color: var(--charcoal);
+    line-height: 1.6;
+    overflow-x: hidden;
   }
-  .logo { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--gold); letter-spacing: .04em; }
-  .navlinks { display: flex; gap: 2rem; }
-  .navlinks a { font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: var(--cream); opacity: .65; text-decoration: none; transition: .2s; }
+
+  h1, h2, h3, .serif {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  a { text-decoration: none; color: inherit; transition: var(--transition); }
+
+  /* NAVIGATION */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.5rem 5%;
+    background: rgba(20, 35, 56, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    font-weight: 600;
+  }
+  .navlinks { display: flex; gap: 2.5rem; }
+  .navlinks a {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--white);
+    opacity: 0.7;
+    font-weight: 500;
+  }
   .navlinks a:hover { opacity: 1; color: var(--gold); }
 
-  /* HERO */
+  .mobile-toggle {
+    display: none;
+    background: none; border: none;
+    cursor: pointer; padding: 0.5rem;
+    z-index: 1100;
+  }
+  .hamburger {
+    width: 20px; height: 2px; background: var(--gold);
+    display: block; position: relative; transition: var(--transition);
+  }
+  .hamburger::before, .hamburger::after {
+    content: ''; position: absolute; width: 20px; height: 2px;
+    background: var(--gold); left: 0; transition: var(--transition);
+  }
+  .hamburger::before { top: -6px; }
+  .hamburger::after { top: 6px; }
+
+  .nav-open .hamburger { background: transparent; }
+  .nav-open .hamburger::before { transform: rotate(45deg); top: 0; }
+  .nav-open .hamburger::after { transform: rotate(-45deg); top: 0; }
+
+  /* HERO SECTION */
   .hero {
     min-height: 100vh;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    text-align: center; padding: 7rem 1.5rem 5rem;
-    background: radial-gradient(ellipse 90% 55% at 50% 0%, rgba(201,168,76,.1) 0%, transparent 70%), var(--deep);
-    position: relative; overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 0 5%;
+    background-color: var(--midnight);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
   }
-  .hero::before {
-    content: ''; position: absolute; inset: 0; pointer-events: none;
-    background-image:
-      repeating-linear-gradient(90deg, rgba(201,168,76,.04) 0, rgba(201,168,76,.04) 1px, transparent 1px, transparent 64px),
-      repeating-linear-gradient(0deg, rgba(201,168,76,.04) 0, rgba(201,168,76,.04) 1px, transparent 1px, transparent 64px);
+  .hero-content {
+    z-index: 10;
+    padding-right: 5%;
   }
-  .badge {
-    display: inline-block; border: 1px solid var(--gold-border); padding: .3rem 1.1rem;
-    font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--gold);
-    border-radius: 2rem; margin-bottom: 2rem; background: var(--gold-dim);
-    animation: fadeUp .7s ease both;
+  .hero-label {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
   }
   .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.8rem, 7vw, 5.5rem);
-    font-weight: 700; line-height: 1.07; color: var(--cream); margin-bottom: .4rem;
-    animation: fadeUp .7s .1s ease both;
+    font-size: clamp(3rem, 8vw, 6rem);
+    margin-bottom: 1.5rem;
+    color: var(--white);
   }
-  .hero h1 span { color: var(--gold); }
+  .hero h1 span { color: var(--gold); font-style: italic; }
   .hero-sub {
-    font-size: clamp(.95rem, 2.5vw, 1.15rem); color: var(--muted); font-weight: 300;
-    letter-spacing: .06em; margin-bottom: 2.5rem; animation: fadeUp .7s .2s ease both;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--slate);
+    margin-bottom: 3rem;
+    max-width: 500px;
+    font-weight: 300;
   }
-  .divider { width: 60px; height: 1px; background: var(--gold); margin: 0 auto 2.5rem; opacity: .45; animation: fadeUp .7s .25s ease both; }
-  .hero-desc {
-    max-width: 560px; color: rgba(245,237,224,.68); line-height: 1.85; font-size: .97rem;
-    margin-bottom: 3rem; animation: fadeUp .7s .3s ease both;
+  .hero-meta {
+    display: flex;
+    gap: 2rem;
+    font-size: 0.85rem;
+    color: var(--white);
+    opacity: 0.8;
   }
-  .cta-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; animation: fadeUp .7s .38s ease both; }
-  .btn-gold {
-    padding: .75rem 2rem; background: var(--gold); color: var(--deep); font-weight: 500;
-    font-size: .83rem; letter-spacing: .05em; text-transform: uppercase; border: none;
-    border-radius: 2px; cursor: pointer; text-decoration: none; transition: .2s;
-    font-family: 'DM Sans', sans-serif;
+  .meta-item strong { color: var(--gold); display: block; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em; margin-bottom: 0.25rem; }
+
+  .hero-visual {
+    position: relative;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  .btn-gold:hover { background: #ddb84e; transform: translateY(-1px); }
-  .btn-outline {
-    padding: .75rem 2rem; background: transparent; color: var(--gold); font-weight: 500;
-    font-size: .83rem; letter-spacing: .05em; text-transform: uppercase;
-    border: 1px solid var(--gold-border); border-radius: 2px; text-decoration: none; transition: .2s;
-    font-family: 'DM Sans', sans-serif;
+  .monogram-container {
+    width: 400px; height: 400px;
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    transition: var(--transition);
   }
-  .btn-outline:hover { background: var(--gold-dim); }
+  .monogram-container:hover { border-color: var(--gold); }
+  .monogram-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 8rem;
+    color: var(--gold);
+    opacity: 0.2;
+    font-weight: 700;
+  }
+  .hero-accent-line {
+    position: absolute;
+    width: 1px; height: 300px;
+    background: var(--border);
+    right: 10%; top: 20%;
+    transform: rotate(15deg);
+  }
 
   /* SECTION BASE */
-  section { padding: 5.5rem 1.5rem; }
-  .inner { max-width: 1000px; margin: 0 auto; }
-  .sec-label { font-size: .7rem; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: .7rem; }
-  .sec-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 600; line-height: 1.15; margin-bottom: 1.2rem; }
-  .sec-line { width: 48px; height: 1px; background: var(--gold); opacity: .45; margin-bottom: 2.5rem; }
+  section { padding: 8rem 5%; position: relative; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .section-header {
+    margin-bottom: 4rem;
+    max-width: 600px;
+  }
+  .section-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    display: block;
+    font-weight: 600;
+  }
+  .section-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: var(--charcoal);
+    margin-bottom: 1.5rem;
+  }
+  .section-divider {
+    width: 60px; height: 2px;
+    background: var(--gold);
+  }
 
   /* ABOUT */
-  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-  .about-text p { color: rgba(245,237,224,.7); line-height: 1.85; font-size: .96rem; margin-bottom: 1.1rem; }
-  .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
-  .stat { border: 1px solid var(--gold-border); padding: 1.2rem 1rem; text-align: center; background: var(--card); border-radius: 3px; }
-  .stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--gold); font-weight: 700; }
-  .stat-label { font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-top: .3rem; }
-  .portrait {
-    width: 100%; aspect-ratio: 3/4; background: var(--card); border: 1px solid var(--gold-border);
-    border-radius: 3px; display: flex; flex-direction: column; align-items: center; justify-content: center;
-    position: relative; overflow: hidden;
+  .about-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 5rem;
+    align-items: start;
   }
-  .portrait::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 30%, rgba(201,168,76,.13), transparent 65%); }
-  .portrait-initials { font-family: 'Playfair Display', serif; font-size: 6rem; color: var(--gold); opacity: .3; }
-  .portrait-tag { font-size: .73rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-top: .5rem; }
+  .about-text p {
+    font-size: 1.1rem;
+    color: var(--slate);
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+  }
+  .about-text p.lead {
+    font-size: 1.25rem;
+    color: var(--charcoal);
+    font-weight: 500;
+    margin-bottom: 2rem;
+  }
+  .about-details {
+    background: var(--white);
+    padding: 3rem;
+    border: 1px solid var(--border);
+    position: relative;
+  }
+  .detail-item {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1rem;
+  }
+  .detail-item:last-child { border: none; }
+  .detail-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--slate);
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  .detail-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--charcoal);
+  }
 
   /* PRACTICE AREAS */
-  .areas { background: var(--dark); }
-  .areas-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.2rem; }
-  .area-card {
-    background: var(--card); border: 1px solid var(--gold-border);
-    padding: 1.8rem 1.5rem; border-radius: 3px; transition: .22s;
-  }
-  .area-card:hover { background: rgba(201,168,76,.07); border-color: rgba(201,168,76,.5); transform: translateY(-2px); }
-  .area-icon { font-size: 1.5rem; margin-bottom: 1rem; }
-  .area-card h3 { font-family: 'Playfair Display', serif; font-size: 1.05rem; margin-bottom: .5rem; color: var(--cream); }
-  .area-card p { font-size: .82rem; color: var(--muted); line-height: 1.75; }
+  .practice-bg { background-color: var(--charcoal); color: var(--white); }
+  .practice-bg .section-title { color: var(--white); }
+  .practice-bg .section-label { color: var(--gold); }
 
-  /* WHY CHOOSE */
-  .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
-  .why-card { padding: 2rem 1.5rem; border-left: 2px solid var(--gold); background: var(--card); border-radius: 0 3px 3px 0; }
-  .why-card h3 { font-family: 'Playfair Display', serif; font-size: 1rem; margin-bottom: .6rem; color: var(--gold); }
-  .why-card p { font-size: .83rem; color: var(--muted); line-height: 1.75; }
+  .practice-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  .practice-card {
+    padding: 3rem 2rem;
+    border: 1px solid var(--border);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+  }
+  .practice-card:hover {
+    border-color: var(--gold);
+    background: rgba(205, 183, 131, 0.03);
+    transform: translateY(-5px);
+  }
+  .practice-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--gold);
+  }
+  .practice-card p {
+    font-size: 0.95rem;
+    color: var(--slate);
+    line-height: 1.7;
+  }
+
+  /* APPROACH (Former Why Choose) */
+  .approach-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+  }
+  .approach-item {
+    padding: 0 1rem;
+  }
+  .approach-item h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--charcoal);
+  }
+  .approach-item p {
+    font-size: 0.95rem;
+    color: var(--slate);
+  }
 
   /* CONTACT */
-  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
-  .contact-item { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 2rem; }
-  .contact-icon {
-    width: 40px; height: 40px; border: 1px solid var(--gold-border); border-radius: 50%;
-    display: flex; align-items: center; justify-content: center; font-size: .9rem; flex-shrink: 0;
-    background: var(--gold-dim);
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
   }
-  .contact-label { font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: .3rem; }
-  .contact-val { font-size: .97rem; color: var(--cream); line-height: 1.6; }
-  .contact-val a { color: var(--gold); text-decoration: none; }
-  .contact-val a:hover { text-decoration: underline; }
-  .map-box { border: 1px solid var(--gold-border); border-radius: 3px; overflow: hidden; height: 340px; }
-  .map-box iframe { width: 100%; height: 100%; border: none; }
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  .info-block {
+    display: flex;
+    gap: 1.5rem;
+  }
+  .info-icon {
+    width: 40px; height: 40px;
+    border: 1px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+  .info-content .label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--slate);
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+  .info-content .value {
+    font-size: 1rem;
+    color: var(--charcoal);
+    font-weight: 500;
+  }
+  .info-content .value a {
+    color: var(--midnight);
+    font-weight: 600;
+  }
+  .info-content .value a:hover { color: var(--gold); }
+
+  .map-container {
+    height: 100%;
+    min-height: 400px;
+    border: 1px solid var(--border);
+  }
+  .map-container iframe {
+    width: 100%; height: 100%; border: none;
+  }
 
   /* FOOTER */
   footer {
-    background: var(--deep); border-top: 1px solid var(--gold-border);
-    padding: 2.2rem 1.5rem; text-align: center;
+    background: var(--midnight);
+    color: var(--white);
+    padding: 4rem 5%;
+    text-align: center;
+    border-top: 1px solid var(--border);
   }
-  footer p { font-size: .78rem; color: var(--muted); letter-spacing: .04em; line-height: 1.7; }
-  footer span { color: var(--gold); }
+  .footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 0.85rem;
+    color: var(--slate);
+    letter-spacing: 0.05em;
+  }
+  .footer-content span { color: var(--gold); }
 
   /* RESPONSIVE */
-  @media (max-width: 700px) {
-    .about-grid { grid-template-columns: 1fr; }
-    .contact-grid { grid-template-columns: 1fr; }
-    .navlinks { display: none; }
-    .portrait { aspect-ratio: 1/1; }
+  @media (max-width: 1024px) {
+    .hero { grid-template-columns: 1fr; text-align: center; }
+    .hero-content { padding-right: 0; display: flex; flex-direction: column; align-items: center; }
+    .hero-sub { margin-left: auto; margin-right: auto; }
+    .hero-meta { justify-content: center; }
+    .hero-visual { display: none; }
+    .about-layout { grid-template-columns: 1fr; }
+    .contact-layout { grid-template-columns: 1fr; }
   }
 
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+  @media (max-width: 768px) {
+    .navlinks {
+      position: fixed; top: 0; right: -100%;
+      width: 80%; height: 100vh;
+      background: var(--midnight);
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: var(--transition);
+      box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+    }
+    .nav-open .navlinks { right: 0; }
+    .mobile-toggle { display: block; }
+    .hero h1 { font-size: 3.5rem; }
+    .about-details { padding: 2rem; }
+  }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="logo">N. Saravanan &mdash; Advocate</div>
+<nav id="main-nav">
+  <div class="logo">N. Saravanan</div>
   <div class="navlinks">
+    <a href="#home">Home</a>
     <a href="#about">About</a>
     <a href="#practice">Practice</a>
-    <a href="#why">Why Us</a>
+    <a href="#approach">Approach</a>
     <a href="#contact">Contact</a>
   </div>
+  <button class="mobile-toggle" onclick="toggleMenu()">
+    <span class="hamburger"></span>
+  </button>
 </nav>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="badge">Advocate &amp; Legal Counsel &bull; B.A.,B.L.,</div>
-  <h1>N. <span>Saravanan</span><br>Advocate</h1>
-  <p class="hero-sub">B.A.,B.L., &nbsp;|&nbsp; Polur, Thiruvannamalai District</p>
-  <div class="divider"></div>
-  <p class="hero-desc">
-    Trusted legal representation with integrity, clarity, and commitment.
-    Serving clients across Thiruvannamalai district with dedication to justice.
-  </p>
-  <div class="cta-row">
-    <a class="btn-gold" href="#contact">Get in Touch</a>
-    <a class="btn-outline" href="#practice">Practice Areas</a>
+<section id="home" class="hero">
+  <div class="hero-content">
+    <span class="hero-label">Legal Professional &bull; Tamil Nadu</span>
+    <h1>N. <span>Saravanan</span><br>Advocate</h1>
+    <p class="hero-sub">Dedicated legal representation characterized by integrity, professional restraint, and a commitment to justice.</p>
+    <div class="hero-meta">
+      <div class="meta-item">
+        <strong>Qualifications</strong>
+        B.A., B.L.
+      </div>
+      <div class="meta-item">
+        <strong>Jurisdiction</strong>
+        Polur, Thiruvannamalai
+      </div>
+    </div>
   </div>
-</div>
+  <div class="hero-visual">
+    <div class="hero-accent-line"></div>
+    <div class="monogram-container">
+      <div class="monogram-text">NS</div>
+    </div>
+  </div>
+</section>
 
-<!-- ABOUT -->
 <section id="about">
-  <div class="inner">
-    <div class="about-grid">
-      <div>
-        <p class="sec-label">About</p>
-        <h2 class="sec-title">Experienced Legal Advocate in Thiruvannamalai</h2>
-        <div class="sec-line"></div>
-        <div class="about-text">
-          <p>Advocate N. Saravanan (B.A.,B.L.,) is a seasoned legal professional based in Polur, Thiruvannamalai district, Tamil Nadu. With 25+ years of dedicated practice, he brings deep knowledge of Indian law and an unwavering commitment to his clients.</p>
-          <p>He provides comprehensive legal services, ensuring every client receives honest counsel and strong representation — from initial consultation all the way through to resolution.</p>
-          <p>Conveniently located in Polur, he serves individuals, families, and businesses across Thiruvannamalai district and surrounding areas.</p>
-        </div>
-        <div class="stat-row">
-          <div class="stat">
-            <div class="stat-num">BA</div>
-            <div class="stat-label">Arts Degree</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">BL</div>
-            <div class="stat-label">Law Degree</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">TN</div>
-            <div class="stat-label">Bar Council</div>
-          </div>
-        </div>
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">About the Practitioner</span>
+      <h2 class="section-title">Professional Profile</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="about-layout">
+      <div class="about-text">
+        <p class="lead">Advocate N. Saravanan provides comprehensive legal counsel based in Polur, Thiruvannamalai District, Tamil Nadu.</p>
+        <p>With extensive experience in the Indian legal system, he is committed to delivering honest, clear, and effective representation for a diverse range of clients. His practice is built upon the principles of professional ethics and a deep understanding of the local judicial landscape.</p>
+        <p>He ensures that every matter, regardless of complexity, is handled with meticulous attention to detail and a steady commitment to achieving the best possible legal outcome for his clients.</p>
       </div>
-      <div class="portrait">
-        <div class="portrait-initials">NS</div>
-        <div class="portrait-tag">N. Saravanan — Advocate</div>
+      <div class="about-details">
+        <div class="detail-item">
+          <span class="detail-label">Professional Name</span>
+          <span class="detail-value">N. Saravanan</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">Designation</span>
+          <span class="detail-value">Advocate</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">Academic Credentials</span>
+          <span class="detail-value">B.A., B.L.</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">Professional Body</span>
+          <span class="detail-value">Tamil Nadu Bar Council</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">Primary Location</span>
+          <span class="detail-value">Polur, Thiruvannamalai District</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PRACTICE AREAS -->
-<section id="practice" class="areas">
-  <div class="inner">
-    <p class="sec-label">Expertise</p>
-    <h2 class="sec-title">Practice Areas</h2>
-    <div class="sec-line"></div>
-    <div class="areas-grid">
-      <div class="area-card">
-        <div class="area-icon">⚖️</div>
+<section id="practice" class="practice-bg">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Areas of Practice</span>
+      <h2 class="section-title">Legal Expertise</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="practice-grid">
+      <div class="practice-card">
         <h3>Civil Law</h3>
-        <p>Property disputes, contract matters, civil litigation and relief before civil courts.</p>
+        <p>Handling property disputes, contract matters, and civil litigation before the appropriate civil courts.</p>
       </div>
-      <div class="area-card">
-        <div class="area-icon">👨‍👩‍👧</div>
+      <div class="practice-card">
         <h3>Family Law</h3>
-        <p>Matrimonial disputes, divorce, maintenance, custody and succession matters.</p>
+        <p>Matrimonial disputes, divorce proceedings, maintenance, custody, and succession matters.</p>
       </div>
-      <div class="area-card">
-        <div class="area-icon">🏛️</div>
+      <div class="practice-card">
         <h3>Criminal Law</h3>
-        <p>Defence representation, bail applications, criminal appeals and court hearings.</p>
+        <p>Defence representation, bail applications, criminal appeals, and court hearings.</p>
       </div>
-      <div class="area-card">
-        <div class="area-icon">🏠</div>
+      <div class="practice-card">
         <h3>Property Law</h3>
-        <p>Land disputes, title verification, registration and revenue court matters.</p>
+        <p>Land disputes, title verification, registration, and revenue court matters.</p>
       </div>
-      <div class="area-card">
-        <div class="area-icon">📜</div>
+      <div class="practice-card">
         <h3>Documentation</h3>
-        <p>Legal drafting, affidavits, agreements, notices and deed preparation.</p>
+        <p>Professional legal drafting, affidavits, agreements, notices, and deed preparation.</p>
       </div>
-      <div class="area-card">
-        <div class="area-icon">🤝</div>
+      <div class="practice-card">
         <h3>Legal Consultation</h3>
-        <p>Expert legal advice for individuals and families on all legal matters.</p>
+        <p>Providing factual legal advice and guidance for individuals and families.</p>
       </div>
-      <div class="area-card">
-        <div class="area-icon">🔏</div>
-        <h3>State Notary</h3>
-        <p>Notarisation of documents, affidavits, declarations and attestations under State authority.</p>
+      <div class="practice-card">
+        <h3>Notarial Services</h3>
+        <p>Authorized Notarisation of documents and affidavits under both State and Central authority.</p>
       </div>
-      <div class="area-card">
-        <div class="area-icon">📋</div>
-        <h3>Central Notary</h3>
-        <p>Centralised notarial services for documents valid across India and for international use.</p>
     </div>
   </div>
 </section>
 
-<!-- WHY CHOOSE -->
-<section id="why">
-  <div class="inner">
-    <p class="sec-label">Why Choose Us</p>
-    <h2 class="sec-title">Our Commitment to You</h2>
-    <div class="sec-line"></div>
-    <div class="why-grid">
-      <div class="why-card">
+<section id="approach">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Professional Standard</span>
+      <h2 class="section-title">Our Approach</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="approach-grid">
+      <div class="approach-item">
         <h3>Integrity</h3>
-        <p>Honest and transparent legal counsel with your best interests always at the forefront.</p>
+        <p>A practice grounded in transparency and honest counsel, ensuring clients are fully informed of their legal standing.</p>
       </div>
-      <div class="why-card">
-        <h3>Local Knowledge</h3>
-        <p>Deep familiarity with Thiruvannamalai district courts, procedures, and local legal landscape.</p>
+      <div class="approach-item">
+        <h3>Regional Knowledge</h3>
+        <p>Deep familiarity with the procedures and landscape of the Thiruvannamalai district courts.</p>
       </div>
-      <div class="why-card">
+      <div class="approach-item">
         <h3>Accessibility</h3>
-        <p>Approachable and responsive — we make legal help accessible to every individual.</p>
+        <p>Maintaining a professional yet approachable presence to make legal assistance attainable.</p>
       </div>
-      <div class="why-card">
-        <h3>Dedicated Representation</h3>
-        <p>Every case receives personalised attention and committed advocacy from start to finish.</p>
+      <div class="approach-item">
+        <h3>Diligence</h3>
+        <p>A methodical approach to every case, ensuring all legal avenues are explored with precision.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact" style="background: var(--dark);">
-  <div class="inner">
-    <p class="sec-label">Contact</p>
-    <h2 class="sec-title">Get in Touch</h2>
-    <div class="sec-line"></div>
-    <div class="contact-grid">
-      <div>
-        <div class="contact-item">
-          <div class="contact-icon">📍</div>
-          <div>
-            <div class="contact-label">Office Location</div>
-            <div class="contact-val">Polur, Thiruvannamalai District<br>Tamil Nadu, India</div>
+<section id="contact">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Contact Particulars</span>
+      <h2 class="section-title">Get in Touch</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="contact-layout">
+      <div class="contact-info">
+        <div class="info-block">
+          <div class="info-icon">📍</div>
+          <div class="info-content">
+            <span class="label">Office Address</span>
+            <span class="value">Polur, Thiruvannamalai District<br>Tamil Nadu, India</span>
           </div>
         </div>
-        <div class="contact-item">
-          <div class="contact-icon">⚖️</div>
-          <div>
-            <div class="contact-label">Qualification</div>
-            <div class="contact-val">Advocate — B.A.,B.L.,<br>Tamil Nadu Bar Council</div>
+        <div class="info-block">
+          <div class="info-icon">📞</div>
+          <div class="info-content">
+            <span class="label">Telephone</span>
+            <span class="value"><a href="tel:+919443557361">+91 94435 57361</a></span>
           </div>
         </div>
-        <div class="contact-item">
-          <div class="contact-icon">📞</div>
-          <div>
-            <div class="contact-label">Phone</div>
-            <div class="contact-val"><a href="tel:+919443557361">+91 94435 57361</a></div>
+        <div class="info-block">
+          <div class="info-icon">🗓️</div>
+          <div class="info-content">
+            <span class="label">Office Hours</span>
+            <span class="value">Monday – Saturday<br>9:00 AM – 9:00 PM</span>
           </div>
         </div>
-        <div class="contact-item">
-          <div class="contact-icon">🗓️</div>
-          <div>
-            <div class="contact-label">Office Hours</div>
-            <div class="contact-val">Monday – Saturday<br>9:00 AM – 9:00 PM</div>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon">🗺️</div>
-          <div>
-            <div class="contact-label">Google Maps</div>
-            <div class="contact-val">
-              <a href="https://maps.app.goo.gl/TAPoajSUHpSPv6R46" target="_blank">View on Google Maps →</a>
-            </div>
+        <div class="info-block">
+          <div class="info-icon">🗺️</div>
+          <div class="info-content">
+            <span class="label">Location</span>
+            <span class="value"><a href="https://maps.app.goo.gl/TAPoajSUHpSPv6R46" target="_blank">View on Google Maps →</a></span>
           </div>
         </div>
       </div>
-      <div class="map-box">
+      <div class="map-container">
         <iframe
           src="https://maps.google.com/maps?q=12.508651,79.1233695&z=16&output=embed"
           allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
@@ -358,10 +578,24 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  <p>© 2026 <span>N. Saravanan</span>, Advocate (B.A.,B.L.,) &nbsp;&bull;&nbsp; Polur, Thiruvannamalai District, Tamil Nadu<br>All Rights Reserved</p>
+  <div class="footer-content">
+    <p>© 2026 <span>N. Saravanan</span>, Advocate (B.A., B.L.) &bull; Polur, Thiruvannamalai District, Tamil Nadu</p>
+    <p style="margin-top: 1rem; font-size: 0.75rem; opacity: 0.6;">Professional legal profile. Not an advertisement.</p>
+  </div>
 </footer>
 
+<script>
+  function toggleMenu() {
+    document.body.classList.toggle('nav-open');
+  }
+
+  // Close menu when link is clicked
+  document.querySelectorAll('.navlinks a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.body.classList.remove('nav-open');
+    });
+  });
+</script>
 </body>
 </html>
